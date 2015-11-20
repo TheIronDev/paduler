@@ -7,8 +7,16 @@ module.exports = {
 	},
 	module: {
 		loaders: [
-			{ test: /\.jsx/, exclude: /node_modules/, loader: "babel"},
-			{ test: /\.es6/, exclude: /node_modules/, loader: "babel"},
+			{ test: /\.jsx/, exclude: /node_modules/, loader: "babel",
+				query: {
+					presets: ['es2015']
+				}
+			},
+			{ test: /\.es6/, exclude: /node_modules/, loader: "babel",
+				query: {
+					presets: ['es2015']
+				}
+			},
 			{ test: /png|jpg|jpeg|gif|svg/, exclude: /node_modules/, loader: "url-loader"},
 			{ test: /\.(otf|eot|svg|ttf|woff|woff2).*$/, loader: 'url-loader?name=[path][name].[ext]'},
 			{ test: /\.css$/, loader: "style-loader!css-loader" },
