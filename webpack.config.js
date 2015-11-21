@@ -9,12 +9,12 @@ module.exports = {
 		loaders: [
 			{ test: /\.jsx/, exclude: /node_modules/, loader: "babel",
 				query: {
-					presets: ['es2015']
+					presets: ['es2015', 'react']
 				}
 			},
 			{ test: /\.es6/, exclude: /node_modules/, loader: "babel",
 				query: {
-					presets: ['es2015']
+					presets: ['es2015', 'react']
 				}
 			},
 			{ test: /png|jpg|jpeg|gif|svg/, exclude: /node_modules/, loader: "url-loader"},
