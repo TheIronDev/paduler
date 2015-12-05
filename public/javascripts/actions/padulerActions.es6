@@ -4,9 +4,14 @@
  * TODO: Implement actions
  */
 
+import rankStaminaMap from '../utils/rankStaminaMap.es6';
+
 export function changeRank(rank) {
+
+	let maximumStamina = parseInt(rankStaminaMap[rank], 10);
 	let data = {
-		rank
+		rank,
+		maximumStamina
 	};
 	return {
 		type: 'CHANGE_RANK',

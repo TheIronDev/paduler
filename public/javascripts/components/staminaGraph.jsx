@@ -14,7 +14,7 @@ export default React.createClass({
 				<polyline
 					fill="none"
 					stroke="#0074d9"
-					stroke-width="2"
+					strokeWidth="2"
 					points="
 						0, 100
 						100,70

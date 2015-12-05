@@ -20,9 +20,13 @@ const defaultAction = {
 
 function paduler(state = initialState, action = defaultAction) {
 
+	let data = action.data || {};
 	switch (action.type) {
-
 		case 'CHANGE_RANK':
+			return Object.assign({}, state, {
+				rank: data.rank,
+				maximumStamina: data.maximumStamina
+			});
 		case 'CHANGE_CURRENT_STAMINA':
 		case 'ADD_EVENT':
 		case 'REMOVE_EVENT':
