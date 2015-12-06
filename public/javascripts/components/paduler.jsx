@@ -33,7 +33,7 @@ let Paduler = React.createClass({
 		let props = this.props;
 		return (<div>
 			<UserFields updateRank={this.updateRank} rank={props.rank} />
-			<StaminaGraph />
+			<StaminaGraph maximumStamina={props.maximumStamina} />
 			<Debugger {...this.props} />
 		</div>);
 	}

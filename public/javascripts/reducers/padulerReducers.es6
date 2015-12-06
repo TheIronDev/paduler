@@ -7,9 +7,9 @@
 import { combineReducers } from 'redux';
 
 const initialState = {
-	rank: 1,
+	rank: 100,
 	currentStamina: 20,
-	maximumStamina: 20,
+	maximumStamina: 66,
 	timeLeft: 300,
 	events: []
 };
