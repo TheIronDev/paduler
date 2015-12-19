@@ -3,7 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { changeRank } from '../actions/padulerActions.es6';
+import { changeRank, changeCurrentStamina } from '../actions/padulerActions.es6';
 
 import UserFields from './userFields.jsx';
 import StaminaGraph from './staminaGraph.jsx';
@@ -29,11 +29,19 @@ let Paduler = React.createClass({
 		this.props.dispatch(changeRank(rank));
 	},
 
+	updateStamina(currentStamina) {
+		this.props.dispatch(changeCurrentStamina(currentStamina));
+	},
+
 	render() {
 		let props = this.props;
 		return (<div>
-			<UserFields updateRank={this.updateRank} rank={props.rank} />
-			<StaminaGraph maximumStamina={props.maximumStamina} />
+
+			<UserFields
+					updateRank={this.updateRank} updateStamina={this.updateStamina}
+					rank={props.rank} maximumStamina={props.maximumStamina} currentStamina={props.currentStamina} />
+
+			<StaminaGraph maximumStamina={props.maximumStamina} currentStamina={props.currentStamina} />
 			<Debugger {...this.props} />
 		</div>);
 	}

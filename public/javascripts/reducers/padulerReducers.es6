@@ -28,6 +28,9 @@ function paduler(state = initialState, action = defaultAction) {
 				maximumStamina: data.maximumStamina
 			});
 		case 'CHANGE_CURRENT_STAMINA':
+			return Object.assign({}, state, {
+				currentStamina: data.currentStamina
+			});
 		case 'ADD_EVENT':
 		case 'REMOVE_EVENT':
 		case 'DECREMENT_TIMELEFT':

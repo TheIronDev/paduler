@@ -19,9 +19,9 @@ export function changeRank(rank) {
 	}
 };
 
-export function changeCurrentStamina(stamina) {
+export function changeCurrentStamina(currentStamina) {
 	let data = {
-		stamina
+		currentStamina
 	};
 	return {
 		type: 'CHANGE_CURRENT_STAMINA',

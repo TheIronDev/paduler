@@ -12,6 +12,7 @@ import React from 'react';
 export default React.createClass({
 
 	propTypes: {
+		currentStamina: React.PropTypes.number,
 		maximumStamina: React.PropTypes.number,
 		staminaHeightModifier: React.PropTypes.number
 	},
@@ -33,12 +34,24 @@ export default React.createClass({
 	},
 
 	/**
+	 * Generate a point on the canvas
+	 * @param stamina
+	 * @param maximumStamina
+	 * @param heightModifier
+	 */
+	generatePoint(timePoint, stamina, maximumStamina, heightModifier) {
+		return [timePoint, (maximumStamina - stamina) * heightModifier];
+	},
+
+	findNextPoint(currentPoint) {
+		return [currentPoint[0] + currentPoint[1], 0];
+	},
+
+	/**
 	 * Generate a list of points for out poly line
 	 * @returns {*[]}
 	 */
 	generatePoints() {
-
-		let adjustedHeight = this.props.maximumStamina * this.props.staminaHeightModifier;
 
 		/**
 		 * Important note: each point consists of x, y.  x from left to right, y top to bottom
@@ -48,21 +61,21 @@ export default React.createClass({
 		 *  (100, 0) would be top right
 		 *  (100, 100) would be bottom right
 		 *
-		 * TODO: use currentStamina to set the starting point
-		 * TODO: calculate a rate of change
 		 * TODO: incorporate events and their change.
 		 */
 
+		let maximumStamina = this.props.maximumStamina;
+		let staminaHeightModifier = this.props.staminaHeightModifier;
+
+		let initialPoint = this.generatePoint(0, this.props.currentStamina, maximumStamina, staminaHeightModifier);
+		let nextPoint = this.findNextPoint(initialPoint);
+		let lastPoint = [this.props.svgWidth, 0];
+
+
 		return [
-			`0, ${adjustedHeight}`,
-			`100, ${adjustedHeight-30}`,
-			`200, ${adjustedHeight-60}`,
-			`200, ${adjustedHeight}`,
-			`300, ${adjustedHeight-30}`,
-			`300, ${adjustedHeight}`,
-			`400, ${adjustedHeight-30}`,
-			`400, ${adjustedHeight-adjustedHeight}`,
-			`1440, 0`
+			initialPoint,
+			nextPoint,
+			lastPoint
 		];
 	},
 
