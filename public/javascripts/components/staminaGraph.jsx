@@ -21,7 +21,7 @@ export default React.createClass({
 		return {
 			staminaHeightModifier: 5, // convenient number to use, since stamina increases at a rate of 1/5.
 			svgWidth: 1440 // aka minutes in a day
-		}
+		};
 	},
 
 	generateViewBox() {

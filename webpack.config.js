@@ -6,6 +6,9 @@ module.exports = {
 		filename: 'app.js'
 	},
 	module: {
+		preLoaders: [
+			{test: /\.jsx|es6$/, loader: "eslint-loader", exclude: /node_modules/},
+		],
 		loaders: [
 			{ test: /\.jsx/, exclude: /node_modules/, loader: "babel",
 				query: {
