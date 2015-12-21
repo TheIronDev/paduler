@@ -19,7 +19,7 @@ export default React.createClass({
 
 	getDefaultProps() {
 		return {
-			staminaHeightModifier: 5,
+			staminaHeightModifier: 5, // convenient number to use, since stamina increases at a rate of 1/5.
 			svgWidth: 1440 // aka minutes in a day
 		}
 	},
@@ -28,9 +28,9 @@ export default React.createClass({
 		let maximumStamina = this.props.maximumStamina;
 		let staminaHeightModifier = this.props.staminaHeightModifier;
 		let viewBoxWidth = this.props.svgWidth;
-		let viewBoxHeight = maximumStamina*staminaHeightModifier;
+		let viewBoxHeight = maximumStamina * staminaHeightModifier + 50;
 
-		return `0 0 ${viewBoxWidth} ${maximumStamina*staminaHeightModifier}`;
+		return `0 0 ${viewBoxWidth} ${viewBoxHeight}`;
 	},
 
 	/**
@@ -79,11 +79,33 @@ export default React.createClass({
 		];
 	},
 
+	renderYAxis(svgHeight) {
+		return (<g>
+			<text x={svgHeight/2 * -1} y="20"
+			      transform="rotate(-90)"
+			      fontFamily="Verdana" >
+				Stamina
+			</text>
+		</g>);
+	},
+
+	renderXAxis(maximumStamina, staminaHeightModifier, svgWidth, svgHeight) {
+		return (<g>
+			<line x1="0" y1={maximumStamina * staminaHeightModifier}
+		              x2={svgWidth} y2={maximumStamina * staminaHeightModifier}
+		              stroke="black"
+		              strokeWidth="1"/>
+
+			<text x={svgWidth/2} y={svgHeight + 20}>Time</text>
+		</g>);
+	},
+
 	render() {
 		let maximumStamina = this.props.maximumStamina;
 		let staminaHeightModifier = this.props.staminaHeightModifier;
 		let svgHeight = this.props.maximumStamina * this.props.staminaHeightModifier;
 		let svgWidth = this.props.svgWidth;
+
 		return (<div className="staminaGraph-container">
 			<svg viewBox={this.generateViewBox()} className="staminaGraph-chart">
 				<polyline
@@ -92,16 +114,9 @@ export default React.createClass({
 					strokeWidth="2"
 					points={this.generatePoints()} />
 
-				<text x={svgHeight/2 * -1} y="20"
-				      transform="rotate(-90)"
-				      fontFamily="Verdana" >
-					Stamina
-				</text>
+				{this.renderYAxis(svgHeight)}
+				{this.renderXAxis(maximumStamina, staminaHeightModifier, svgWidth, svgHeight)}
 
-				<text x={svgWidth/2} y={svgHeight - 10}
-				      fontFamily="Verdana">
-					Time
-				</text>
 			</svg>
 
 		</div>);

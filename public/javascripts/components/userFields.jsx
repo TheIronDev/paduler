@@ -36,7 +36,6 @@ export default React.createClass({
 		return (<div>
 			<input type="number" name="rank" placeholder="Rank" min="1" max="500" onChange={props.updateRank} value={props.rank} />
 			<input type="number" name="currentStamina" placeholder="Current Stamina" min="0" max={props.maximumStamina} onChange={this.updateStamina} value={props.currentStamina} />
-			<input type="text" name="timeLeft" placeholder="Time Left" />
 		</div>);
 	}
 });

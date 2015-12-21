@@ -17,7 +17,7 @@ export function changeRank(rank) {
 		type: 'CHANGE_RANK',
 		data
 	}
-};
+}
 
 export function changeCurrentStamina(currentStamina) {
 	let data = {
@@ -27,7 +27,7 @@ export function changeCurrentStamina(currentStamina) {
 		type: 'CHANGE_CURRENT_STAMINA',
 		data
 	}
-};
+}
 
 export function addEvent(event) {
 	let data = {
@@ -37,7 +37,7 @@ export function addEvent(event) {
 		type: 'ADD_EVENT',
 		data
 	}
-};
+}
 
 export function removeEvent(event) {
 	let data = {
@@ -47,8 +47,9 @@ export function removeEvent(event) {
 		type: 'REMOVE_EVENT',
 		data
 	}
-};
+}
 
+// I'm holding off on this until I have a better idea what I want this project to evolve to.
 export function decrementTimeLeft(timeLeft) {
 	let data = {
 		timeLeft: timeLeft
@@ -57,5 +58,5 @@ export function decrementTimeLeft(timeLeft) {
 		type: 'DECREMENT_TIMELEFT',
 		data
 	}
-};
+}
 
