@@ -27,7 +27,7 @@ export default React.createClass({
 	},
 
 	updateStamina(event) {
-		let currentStamina = parseInt(event.target.value || 1);
+		let currentStamina = parseInt(event.target.value || 0);
 		this.props.updateStamina(currentStamina);
 	},
 
